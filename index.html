@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Kids Coders Club</title>
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #7209b7;
+      --accent: #f72585;
+      --light: #f8f9fa;
+      --dark: #1d3557;
+      --success: #2ec4b6;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+    
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      text-align: center;
+      background-color: var(--light);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+    
+    .cta-btn {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .features {
+      padding: 4rem 2rem;
+      background-color: white;
+    }
+    
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .feature-card {
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    .how-it-works {
+      padding: 4rem 2rem;
+      background-color: var(--light);
+      text-align: center;
+    }
+    
+    .how-it-works h2 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+    }
+    
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .step {
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    
+    .gallery {
+      padding: 4rem 2rem;
+      background-color: white;
+    }
+    
+    .gallery h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .game-card {
+      background-color: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .game-img {
+      width: 100%;
+      height: 180px;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+    }
+    
+    .game-info {
+      padding: 1.5rem;
+    }
+    
+    .game-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .game-info p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    
+    .game-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .game-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .play-btn {
+      background-color: var(--success);
+      color: white;
+    }
+    
+    .remix-btn {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Modal for demo */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .code-area {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      border-radius: 5px;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    /* Demo game styles */
+    #game-container {
+      width: 100%;
+      height: 400px;
+      background: #333;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #player {
+      width: 50px;
+      height: 50px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .obstacle {
+      width: 60px;
+      height: 20px;
+      background-color: var(--secondary);
+      position: absolute;
+      top: -20px;
+    }
+
+    .score-display {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.8);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AI Kids Coders Club</div>
+    <div class="subtitle">Create, Play, and Share AI-Powered Web Games!</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#gallery">Game Gallery</a>
+      <a href="#create-game" id="create-btn">Create a Game</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Build Your Own Web Games with AI!</h1>
+    <p>AI Kids Coders Club is where young creators can use AI to build, share, and remix web games - no coding experience required! Just describe your game idea to Claude, get the code, and share it with friends!</p>
+    <button class="cta-btn" id="hero-create-btn">Start Creating Now!</button>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Why Kids Love AI Kids Coders Club</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered Creation</h3>
+        <p>Use Claude AI to turn your ideas into real games without needing to know how to code.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Play Instantly</h3>
+        <p>Play your games right in the browser and share them with friends all over the world.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Remix & Learn</h3>
+        <p>See a game you like? Fork it and make your own version to learn how it works!</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Safe Community</h3>
+        <p>Connect with other young creators in our moderated, kid-friendly environment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Works Everywhere</h3>
+        <p>Create and play games on any device - computer, tablet, or smartphone.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Learn Real Skills</h3>
+        <p>Build a foundation in web development while having fun creating games.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Describe Your Game</h3>
+        <p>Tell Claude what kind of game you want to create - a platformer, puzzle game, space shooter, or anything else you can imagine!</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Get Your Code</h3>
+        <p>Claude will generate the HTML, CSS, and JavaScript code for your game based on your description.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Upload & Share</h3>
+        <p>Upload your game to AI Kids Coders Club with one click, and share it with friends and family!</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Remix & Improve</h3>
+        <p>Learn from other games, fork them to make your own versions, and keep improving your creation!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h2>Popular Games</h2>
+    <div class="games-grid">
+      <div class="game-card">
+        <div class="game-img">Space Explorer Game Preview</div>
+        <div class="game-info">
+          <h3>Space Explorer</h3>
+          <p>Navigate through an asteroid field while collecting power-ups.</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn" onclick="openGameDemo()">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="game-img">Math Challenge Game Preview</div>
+        <div class="game-info">
+          <h3>Math Challenge</h3>
+          <p>Solve math problems quickly to beat the clock!</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="game-img">Pixel Painter Game Preview</div>
+        <div class="game-info">
+          <h3>Pixel Painter</h3>
+          <p>Create pixel art masterpieces and share them with friends.</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="game-img">Memory Match Game Preview</div>
+        <div class="game-info">
+          <h3>Memory Match</h3>
+          <p>Test your memory by matching pairs of cards.</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="game-img">Froggy Jump Game Preview</div>
+        <div class="game-info">
+          <h3>Froggy Jump</h3>
+          <p>Help the frog jump across lily pads without falling into the water!</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="game-img">Word Scramble Game Preview</div>
+        <div class="game-info">
+          <h3>Word Scramble</h3>
+          <p>Unscramble letters to form words before time runs out.</p>
+          <div class="game-actions">
+            <button class="game-btn play-btn">Play</button>
+            <button class="game-btn remix-btn">Remix</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 AI Kids Coders Club - Learning Through Play</p>
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Demo modal -->
+  <div class="modal" id="demo-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Space Explorer Game</h2>
+      <p>This is a simple game where you dodge falling obstacles. Use the left/right arrow keys to move.</p>
+      
+      <div id="game-container">
+        <div id="player"></div>
+        <div class="score-display">Score: <span id="score">0</span></div>
+      </div>
+      
+      <h3>How This Game Was Made:</h3>
+      <p>This game was created using HTML, CSS, and JavaScript. Here's the code:</p>
+      
+      <div class="code-area">
+        <pre><code>
+&lt;!-- HTML Structure --&gt;
+&lt;div id="game-container"&gt;
+  &lt;div id="player"&gt;&lt;/div&gt;
+  &lt;div class="score-display"&gt;Score: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS Styling --&gt;
+&lt;style&gt;
+  #game-container {
+    width: 100%;
+    height: 400px;
+    background: #333;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #player {
+    width: 50px;
+    height: 50px;
+    background-color: #f72585;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+  }
+
+  .obstacle {
+    width: 60px;
+    height: 20px;
+    background-color: #7209b7;
+    position: absolute;
+  }
+
+  .score-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript Game Logic --&gt;
+&lt;script&gt;
+  // Game variables
+  let score = 0;
+  let playerX = 175;
+  let gameActive = true;
+  
+  // Get elements
+  const player = document.getElementById('player');
+  const gameContainer = document.getElementById('game-container');
+  const scoreDisplay = document.getElementById('score');
+  
+  // Set initial player position
+  player.style.left = playerX + 'px';
+  
+  // Handle keyboard controls
+  document.addEventListener('keydown', (e) => {
+    if (!gameActive) return;
+    
+    if (e.key === 'ArrowLeft' && playerX > 0) {
+      playerX -= 15;
+    } else if (e.key === 'ArrowRight' && playerX < gameContainer.clientWidth - 50) {
+      playerX += 15;
+    }
+    
+    player.style.left = playerX + 'px';
+  });
+  
+  // Create obstacles
+  function createObstacle() {
+    if (!gameActive) return;
+    
+    const obstacle = document.createElement('div');
+    obstacle.classList.add('obstacle');
+    
+    const randomX = Math.floor(Math.random() * (gameContainer.clientWidth - 60));
+    obstacle.style.left = randomX + 'px';
+    
+    gameContainer.appendChild(obstacle);
+    
+    let obstacleY = -20;
+    
+    // Animate obstacle falling
+    const obstacleInterval = setInterval(() => {
+      if (!gameActive) {
+        clearInterval(obstacleInterval);
+        return;
+      }
+      
+      obstacleY += 5;
+      obstacle.style.top = obstacleY + 'px';
+      
+      // Check for collision
+      if (
+        obstacleY + 20 >= gameContainer.clientHeight - 70 &&
+        obstacleY <= gameContainer.clientHeight - 20 &&
+        randomX + 60 >= playerX &&
+        randomX <= playerX + 50
+      ) {
+        gameOver();
+        clearInterval(obstacleInterval);
+      }
+      
+      // Check if obstacle passed player
+      if (obstacleY > gameContainer.clientHeight) {
+        score++;
+        scoreDisplay.textContent = score;
+        obstacle.remove();
+        clearInterval(obstacleInterval);
+      }
+    }, 50);
+  }
+  
+  // Game over function
+  function gameOver() {
+    gameActive = false;
+    alert('Game Over! Your score: ' + score);
+    restartGame();
+  }
+  
+  // Restart game
+  function restartGame() {
+    score = 0;
+    scoreDisplay.textContent = score;
+    playerX = 175;
+    player.style.left = playerX + 'px';
+    
+    // Remove all obstacles
+    document.querySelectorAll('.obstacle').forEach(obs => obs.remove());
+    
+    gameActive = true;
+  }
+  
+  // Start creating obstacles
+  setInterval(createObstacle, 1500);
+&lt;/script&gt;
+        </code></pre>
+      </div>
+      
+      <button class="cta-btn" id="download-btn">Download Code</button>
+    </div>
+  </div>
+
+  <!-- Create Game Modal -->
+  <div class="modal" id="create-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeCreateModal()">&times;</span>
+      <h2>Create Your Game with Claude</h2>
+      <p>Describe the game you want to build, and Claude will generate the code for you!</p>
+      
+      <div style="margin: 2rem 0;">
+        <h3>Example Game Request:</h3>
+        <p style="background-color: #f5f5f5; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+          "Hi Claude! I want to make a simple platformer game where a character jumps between platforms to collect coins. The character should be blue, and I want to have 3 levels of increasing difficulty. Can you make this for me?"
+        </p>
+        
+        <p>When you've received your game code from Claude, you can upload it here to share with other kids!</p>
+        
+        <button class="cta-btn" style="margin-top: 1rem;" onclick="closeCreateModal()">Go Chat with Claude</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Game demo functionality
+    function openGameDemo() {
+      document.getElementById('demo-modal').style.display = 'flex';
+      startGame();
+    }
+    
+    function closeModal() {
+      document.getElementById('demo-modal').style.display = 'none';
+      stopGame();
+    }
+    
+    function openCreateModal() {
+      document.getElementById('create-modal').style.display = 'flex';
+    }
+    
+    function closeCreateModal() {
+      document.getElementById('create-modal').style.display = 'none';
+    }
+    
+    // Link buttons to open modal
+    document.getElementById('create-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      openCreateModal();
+    });
+    
+    document.getElementById('hero-create-btn').addEventListener('click', function() {
+      openCreateModal();
+    });
+    
+    // Simple game logic for the demo
+    let gameInterval;
+    let player;
+    let gameContainer;
+    let score = 0;
+    let playerX = 175;
+    let gameActive = false;
+    
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      document.getElementById('score').textContent = score;
+      
+      player = document.getElementById('player');
+      gameContainer = document.getElementById('game-container');
+      
+      // Remove any existing obstacles
+      document.querySelectorAll('.obstacle').forEach(obs => obs.remove());
+      
+      // Set initial player position
+      playerX = (gameContainer.clientWidth / 2) - 25;
+      player.style.left = playerX + 'px';
+      
+      // Setup keyboard controls
+      document.addEventListener('keydown', handleKeyDown);
+      
+      // Start creating obstacles
+      gameInterval = setInterval(createObstacle, 1500);
+    }
+    
+    function stopGame() {
+      gameActive = false;
+      clearInterval(gameInterval);
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+    
+    function handleKeyDown(e) {
+      if (!gameActive) return;
+      
+      if (e.key === 'ArrowLeft' && playerX > 0) {
+        playerX -= 15;
+      } else if (e.key === 'ArrowRight' && playerX < gameContainer.clientWidth - 50) {
+        playerX += 15;
+      }
+      
+      player.style.left = playerX + 'px';
+    }
+    
+    function createObstacle() {
+      if (!gameActive) return;
+      
+      const obstacle = document.createElement('div');
+      obstacle.classList.add('obstacle');
+      
+      const randomX = Math.floor(Math.random() * (gameContainer.clientWidth - 60));
+      obstacle.style.left = randomX + 'px';
+      
+      gameContainer.appendChild(obstacle);
+      
+      let obstacleY = -20;
+      
+      // Animate obstacle falling
+      const obstacleInterval = setInterval(() => {
+        if (!gameActive) {
+          clearInterval(obstacleInterval);
+          return;
+        }
+        
+        obstacleY += 5;
+        obstacle.style.top = obstacleY + 'px';
+        
+        // Check for collision
+        if (
+          obstacleY + 20 >= gameContainer.clientHeight - 70 &&
+          obstacleY <= gameContainer.clientHeight - 20 &&
+          randomX + 60 >= playerX &&
+          randomX <= playerX + 50
+        ) {
+          gameOver();
+          clearInterval(obstacleInterval);
+        }
+        
+        // Check if obstacle passed player
+        if (obstacleY > gameContainer.clientHeight) {
+          score++;
+          document.getElementById('score').textContent = score;
+          obstacle.remove();
+          clearInterval(obstacleInterval);
+        }
+      }, 50);
+    }
+    
+    function gameOver() {
+      gameActive = false;
+      clearInterval(gameInterval);
+      alert('Game Over! Your score: ' + score);
+      startGame();
+    }
+  </script>
+</body>
+</html>
